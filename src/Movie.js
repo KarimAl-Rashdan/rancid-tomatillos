@@ -7,8 +7,10 @@ const Movie = ({image, title, rating}) => {
     <div className="movie">
       <img src={image} alt="Movie Poster"/>
       <h3>{title}</h3>
-      <img src={star} alt="Star Rating" className="star"/>
-      <p>{rating.toFixed(1)}</p>
+      <span className="label">
+        <img src={star} alt="Star Rating" className="star"/>
+        <p>{rating.toFixed(1)}</p>
+      </span>
     </div>
   )
 }
