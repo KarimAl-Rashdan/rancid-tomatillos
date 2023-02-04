@@ -1,0 +1,29 @@
+.movie {
+  width: 65%;
+  height: 36vh;
+  border: 2px solid yellow;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding:10px;
+}
+
+img {
+  height: 165px;
+  width: 100%;
+}
+h3 {
+  font-size: small;
+  margin:0px;
+}
+.star, p {
+  height: 15px;
+  margin: 0px;
+  width: 23px;
+}
+.label {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
