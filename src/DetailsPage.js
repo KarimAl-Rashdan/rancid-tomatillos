@@ -1,5 +1,4 @@
 import React from "react"
-import NavBar from "./NavBar"
 import "./DetailsPage.css"
 
 const DetailsPage = ({posterDetails, showMain}) => {
@@ -10,11 +9,10 @@ const DetailsPage = ({posterDetails, showMain}) => {
         <button onClick={() => showMain()}>Return To Home</button>
       </div>
       <div className="posterSection" style={{backgroundImage: `url(${posterDetails.backdrop_path})`}}>
-        {/* <img src={posterDetails.backdrop_path} alt="Poster Background" /> */}
         <article className="posterDetails">
           <p className="details">{posterDetails.title}</p>
-          <p className="details">{posterDetails.average_rating}</p>
-          <p className="details">{posterDetails.release_date}</p>
+          <p className="details">Rating: {posterDetails.average_rating.toFixed(1)}</p>
+          <p className="details">Release Date: {posterDetails.release_date}</p>
         </article>
       </div>
       <footer>This movie is about drama and romance.</footer>

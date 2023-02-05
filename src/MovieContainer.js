@@ -1,6 +1,7 @@
 import React from "react"
 import "./MovieContainer.css"
 import Movie from "./Movie"
+import NavBar from "./NavBar"
 
 const MovieContainer = ({posters, showDetails}) => {
   const moviePosters = posters.map(poster => {
@@ -16,8 +17,11 @@ const MovieContainer = ({posters, showDetails}) => {
     )
   })
   return (
-    <div className="movieContainer">
-      {moviePosters}
+    <div>
+      <NavBar />
+      <div className="movieContainer">
+        {moviePosters}
+      </div>
     </div>
   )
 }

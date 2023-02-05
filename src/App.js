@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import "./App.css"
 import movieData from "./movieData";
-import NavBar from "./NavBar"
-// import MainPage from "./Components/MainPage/MainPage"
+// import NavBar from "./NavBar"
 import DetailsPage from "./DetailsPage"
 import MovieContainer from "./MovieContainer";
 
@@ -17,7 +16,6 @@ class App extends Component {
   }
   showDetailsPage = (id) => {
     const selectMovie = this.state.posters.find(poster => poster.id === id)
-    console.log("selected movie", selectMovie)
     this.setState({pickPoster: true, posterDetails: selectMovie})
   }
   showMainPage = () => {
@@ -34,7 +32,7 @@ class App extends Component {
     } else {
       return (
         <main>
-          <NavBar />
+          {/* <NavBar /> */}
           <MovieContainer posters={this.state.posters} showDetails={this.showDetailsPage}/>
         </main>
       )
