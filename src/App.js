@@ -28,16 +28,22 @@ class App extends Component {
   showMainPage = () => {
     this.setState({pickPoster: false, posterDetails: null})
   }
-  showStateMessage = () => {
+  // showStateMessage = () => {
+  //   const { error, isLoaded } = this.state
+  //   if(error) {
+  //     return <div>You have an error: {error.message}</div>
+  //   } else if(!isLoaded) {
+  //     return <div>Loading...</div>
+  //   } 
+  // }
+  render() {
+    // this.showStateMessage()
     const { error, isLoaded } = this.state
     if(error) {
       return <div>You have an error: {error.message}</div>
     } else if(!isLoaded) {
       return <div>Loading...</div>
     } 
-  }
-  render() {
-    this.showStateMessage()
     const isPosterPicked = this.state.pickPoster
     if(isPosterPicked) {
       return (
