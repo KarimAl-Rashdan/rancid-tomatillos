@@ -2,7 +2,7 @@ import React from "react"
 import "./MovieContainer.css"
 import Movie from "./Movie"
 
-const MovieContainer = ({posters}) => {
+const MovieContainer = ({posters, showDetails}) => {
   const moviePosters = posters.map(poster => {
     return (
       <Movie 
@@ -11,6 +11,7 @@ const MovieContainer = ({posters}) => {
         rating={poster.average_rating}
         id={poster.id}
         key={poster.id}
+        showDetails={showDetails}
       />
     )
   })
