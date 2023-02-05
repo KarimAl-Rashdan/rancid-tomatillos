@@ -11,11 +11,16 @@ const DetailsPage = ({posterDetails, showMain}) => {
       <div className="posterSection" style={{backgroundImage: `url(${posterDetails.backdrop_path})`}}>
         <article className="posterDetails">
           <p className="details">{posterDetails.title}</p>
-          <p className="details">Rating: {posterDetails.average_rating.toFixed(1)}</p>
+          <p className="details">{posterDetails.tagline}</p>
           <p className="details">Release Date: {posterDetails.release_date}</p>
+          <p className="details">Category: {posterDetails.genres}</p>
+          <p className="details">Rating: {posterDetails.average_rating.toFixed(1)}</p>
+          <p className="details">Budget: {posterDetails.budget}</p>
+          <p className="details">Revenue: {posterDetails.revenue}</p>
+          <p className="details">Runtime: {posterDetails.runtime} minutes</p>
         </article>
       </div>
-      <footer>This movie is about drama and romance.</footer>
+      <footer>{posterDetails.overview}</footer>
     </div>
   )
 }
