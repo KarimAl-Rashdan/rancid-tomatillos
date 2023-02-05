@@ -9,8 +9,15 @@ const DetailsPage = ({posterDetails, showMain}) => {
         <h1>Rancid Tomatillos</h1>
         <button onClick={() => showMain()}>Return To Home</button>
       </div>
-      <img src={posterDetails.backdrop_path} alt="Poster Background" />
-      <footer>Hey there</footer>
+      <div className="posterSection" style={{backgroundImage: `url(${posterDetails.backdrop_path})`}}>
+        {/* <img src={posterDetails.backdrop_path} alt="Poster Background" /> */}
+        <article className="posterDetails">
+          <p className="details">{posterDetails.title}</p>
+          <p className="details">{posterDetails.average_rating}</p>
+          <p className="details">{posterDetails.release_date}</p>
+        </article>
+      </div>
+      <footer>This movie is about drama and romance.</footer>
     </div>
   )
 }
