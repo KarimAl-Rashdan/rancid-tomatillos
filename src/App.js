@@ -38,12 +38,6 @@ class App extends Component {
   }
   render() {
     this.showStateMessage()
-    const { error, isLoaded } = this.state
-    if(error) {
-      return <div>You have an error: {error.message}</div>
-    } else if(!isLoaded) {
-      return <div>Loading...</div>
-    } 
     const isPosterPicked = this.state.pickPoster
     if(isPosterPicked) {
       return (
