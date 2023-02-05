@@ -2,10 +2,10 @@ import React from "react"
 import star from "./star-rating.jpg"
 import "./Movie.css"
 
-const Movie = ({image, title, rating}) => {
+const Movie = ({image, title, rating, id, showDetails}) => {
   return (
     <div className="movie">
-      <img src={image} alt="Movie Poster"/>
+      <button onClick={() => showDetails(id)}><img src={image} alt="Movie Poster"/></button>
       <h3>{title}</h3>
       <span className="label">
         <img src={star} alt="Star Rating" className="star"/>

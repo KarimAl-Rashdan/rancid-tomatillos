@@ -1,8 +1,9 @@
 import React from "react"
 import "./MovieContainer.css"
 import Movie from "./Movie"
+import NavBar from "./NavBar"
 
-const MovieContainer = ({posters}) => {
+const MovieContainer = ({posters, showDetails}) => {
   const moviePosters = posters.map(poster => {
     return (
       <Movie 
@@ -11,12 +12,16 @@ const MovieContainer = ({posters}) => {
         rating={poster.average_rating}
         id={poster.id}
         key={poster.id}
+        showDetails={showDetails}
       />
     )
   })
   return (
-    <div className="movieContainer">
-      {moviePosters}
+    <div>
+      <NavBar />
+      <div className="movieContainer">
+        {moviePosters}
+      </div>
     </div>
   )
 }
