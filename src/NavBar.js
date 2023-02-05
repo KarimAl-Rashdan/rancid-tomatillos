@@ -17,7 +17,7 @@ class NavBar extends Component {
             type="text"
             placeholder="Search Movies"
             name="search"
-            value={this.state.search}
+            // value={this.state.search}
           />
           <div className="sortButton">
             <button className="dropBtn">Sort

@@ -21,20 +21,24 @@ class App extends Component {
     .catch((error) => this.setState({isLoaded:true, error}))
   }
   showDetailsPage = (id) => {
-    const selectMovie = this.state.posters.find(poster => poster.id === id)
-    this.setState({pickPoster: true, posterDetails: selectMovie})
+    getData(id)
+    .then((data) => this.setState({isLoaded:true, pickPoster: true, posterDetails: data[1].movie}))
+    .catch((error) => this.setState({isLoaded:true, error}))
   }
   showMainPage = () => {
-    this.setState({pickPoster: false})
+    this.setState({pickPoster: false, posterDetails: null})
   }
-  render() {
+  showStateMessage = () => {
     const { error, isLoaded } = this.state
-    const isPosterPicked = this.state.pickPoster
     if(error) {
       return <div>You have an error: {error.message}</div>
     } else if(!isLoaded) {
       return <div>Loading...</div>
     } 
+  }
+  render() {
+    this.showStateMessage()
+    const isPosterPicked = this.state.pickPoster
     if(isPosterPicked) {
       return (
         <main>
