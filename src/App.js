@@ -23,9 +23,6 @@ class App extends Component {
   showDetailsPage = (id) => {
     const selectedPoster = this.state.posters.find(poster => poster.id === id)
     this.setState({posterDetails: selectedPoster, pickPoster: true, isLoaded: true})
-    // getData(id)
-    // .then((data) => this.setState({isLoaded:true, pickPoster: true, posterDetails: data[1].movie}))
-    // .catch((error) => this.setState({isLoaded:true, error}))
   }
   showMainPage = () => {
     this.setState({pickPoster: false, posterDetails: null})
