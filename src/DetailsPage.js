@@ -1,28 +1,43 @@
-import React from "react"
+import React, { Component } from "react"
+import { getData } from "./ApiCalls"
 import "./DetailsPage.css"
 
-const DetailsPage = ({posterDetails, showMain}) => {
+class DetailsPage extends Component {
+  constructor() {
+    super()
+    this.state = {
+      detailInfo: [],
+      isLoaded: false
+    }
+  }
+  componentDidMount = () => {
+    getData(this.props.posterDetails.id)
+    .then((data) => this.setState({detailInfo: data[0].movie}))
+    .catch((error) => this.setState({isLoaded: true, error}))
+  }
+  render() {
+    const poster = this.state.detailInfo
   return (
     <div>
       <div className="navbar">
         <h1>Rancid Tomatillos</h1>
-        <button onClick={() => showMain()}>Return To Home</button>
+        <button onClick={() => this.props.showMain()}>Return To Home</button>
       </div>
-      <div className="posterSection" style={{backgroundImage: `url(${posterDetails.backdrop_path})`}}>
+      <div className="posterSection" style={{backgroundImage: `url(${poster.backdrop_path})`}}>
         <article className="posterDetails">
-          <p className="details">{posterDetails.title}</p>
-          <p className="details">{posterDetails.tagline}</p>
-          <p className="details">Release Date: {posterDetails.release_date}</p>
-          <p className="details">Category: {posterDetails.genres}</p>
-          <p className="details">Rating: {posterDetails.average_rating.toFixed(1)}</p>
-          <p className="details">Budget: {posterDetails.budget}</p>
-          <p className="details">Revenue: {posterDetails.revenue}</p>
-          <p className="details">Runtime: {posterDetails.runtime} minutes</p>
+          <p className="details">{poster.title}</p>
+          <p className="details">{poster.tagline}</p>
+          <p className="details">Release Date: {poster.release_date}</p>
+          <p className="details">Category: {poster.genres}</p>
+          <p className="details">Rating: {poster.average_rating}</p>
+          <p className="details">Budget: {poster.budget}</p>
+          <p className="details">Revenue: {poster.revenue}</p>
+          <p className="details">Runtime: {poster.runtime} minutes</p>
         </article>
       </div>
-      <footer>{posterDetails.overview}</footer>
+      <footer>{poster.overview}</footer>
     </div>
   )
 }
-
+}
 export default DetailsPage

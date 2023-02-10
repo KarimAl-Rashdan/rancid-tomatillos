@@ -4,6 +4,8 @@ import Movie from "./Movie"
 import NavBar from "./NavBar"
 
 const MovieContainer = ({posters, showDetails}) => {
+  // console.log("posters", posters)
+  // console.log("showdetails", showDetails)
   const moviePosters = posters.map(poster => {
     return (
       <Movie 

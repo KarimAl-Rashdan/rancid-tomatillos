@@ -7,7 +7,10 @@ const getData = (id) => {
   if(id === undefined) {
     return Promise.all([getUrl("movies")])
   } else {
-    return Promise.all([getUrl("movies"), getUrl(`movies/${id}`)])
+    console.log("detaulfetch is firing")
+    console.log("fetch id", id)
+    return Promise.all([getUrl(`movies/${id}`)])
+
   }
 }
 

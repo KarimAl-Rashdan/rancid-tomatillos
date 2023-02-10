@@ -10,7 +10,7 @@
 .posterDetails {
   margin: 75px;
   background-color: azure;
-  height: 40vh;
+  height: 60vh;
   width: 25%;
   border-width: 5px;
   box-sizing: border-box;
@@ -23,6 +23,7 @@ footer {
   height:12vh;
 }
 .details {
+  margin:2px;
   width:100%;
   height: 30px;
 }

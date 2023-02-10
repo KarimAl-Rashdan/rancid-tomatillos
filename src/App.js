@@ -21,9 +21,11 @@ class App extends Component {
     .catch((error) => this.setState({isLoaded:true, error}))
   }
   showDetailsPage = (id) => {
-    getData(id)
-    .then((data) => this.setState({isLoaded:true, pickPoster: true, posterDetails: data[1].movie}))
-    .catch((error) => this.setState({isLoaded:true, error}))
+    const selectedPoster = this.state.posters.find(poster => poster.id === id)
+    this.setState({posterDetails: selectedPoster, pickPoster: true, isLoaded: true})
+    // getData(id)
+    // .then((data) => this.setState({isLoaded:true, pickPoster: true, posterDetails: data[1].movie}))
+    // .catch((error) => this.setState({isLoaded:true, error}))
   }
   showMainPage = () => {
     this.setState({pickPoster: false, posterDetails: null})
@@ -39,6 +41,7 @@ class App extends Component {
   render() {
     this.showStateMessage()
     const isPosterPicked = this.state.pickPoster
+    //pass id into detaillspage
     if(isPosterPicked) {
       return (
         <main>
