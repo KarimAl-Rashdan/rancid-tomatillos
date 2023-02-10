@@ -20,7 +20,7 @@ const MovieContainer = ({posters, showDetails}) => {
   })
   return (
     <div>
-      <NavBar />
+      {/* <NavBar /> */}
       <div className="movieContainer">
         {moviePosters}
       </div>

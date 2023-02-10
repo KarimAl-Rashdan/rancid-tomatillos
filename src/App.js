@@ -3,6 +3,7 @@ import "./App.css"
 import DetailsPage from "./DetailsPage"
 import MovieContainer from "./MovieContainer";
 import { getData } from "./ApiCalls";
+import NavBar from "./NavBar";
 
 class App extends Component {
   constructor() {
@@ -13,6 +14,7 @@ class App extends Component {
       error: "",
       pickPoster: false,
       posterDetails: null,
+      mainpage: true
     }
   }
   componentDidMount = () => {
@@ -22,10 +24,10 @@ class App extends Component {
   }
   showDetailsPage = (id) => {
     const selectedPoster = this.state.posters.find(poster => poster.id === id)
-    this.setState({posterDetails: selectedPoster, pickPoster: true, isLoaded: true})
+    this.setState({posterDetails: selectedPoster, pickPoster: true, isLoaded: true, mainpage: false})
   }
   showMainPage = () => {
-    this.setState({pickPoster: false, posterDetails: null})
+    this.setState({pickPoster: false, posterDetails: null, mainpage: true})
   }
   showStateMessage = () => {
     const { error, isLoaded } = this.state
@@ -38,18 +40,19 @@ class App extends Component {
   render() {
     this.showStateMessage()
     const isPosterPicked = this.state.pickPoster
-    //pass id into detaillspage
-    if(isPosterPicked) {
+    if (isPosterPicked) {
       return (
         <main>
-          <DetailsPage posterDetails={this.state.posterDetails} showMain={this.showMainPage}/>
+          <NavBar mainpage={this.state.mainpage} showMain={this.showMainPage}/>
+          <DetailsPage posterDetails={this.state.posterDetails.id} showMain={this.showMainPage}/>
         </main>
       )
     } else {
       return (
-        <main>
+        <div>
+          <NavBar mainpage={this.state.mainpage} showMain={this.showMainPage}/>
           <MovieContainer posters={this.state.posters} showDetails={this.showDetailsPage}/>
-        </main>
+        </div>
       )
     }
   }

@@ -11,7 +11,7 @@ class DetailsPage extends Component {
     }
   }
   componentDidMount = () => {
-    getData(this.props.posterDetails.id)
+    getData(this.props.posterDetails)
     .then((data) => this.setState({detailInfo: data[0].movie}))
     .catch((error) => this.setState({isLoaded: true, error}))
   }
@@ -19,10 +19,6 @@ class DetailsPage extends Component {
     const poster = this.state.detailInfo
   return (
     <div>
-      <div className="navbar">
-        <h1>Rancid Tomatillos</h1>
-        <button onClick={() => this.props.showMain()}>Return To Home</button>
-      </div>
       <div className="posterSection" style={{backgroundImage: `url(${poster.backdrop_path})`}}>
         <article className="posterDetails">
           <p className="details">{poster.title}</p>
