@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import "./App.css"
 import DetailsPage from "./DetailsPage"
 import MovieContainer from "./MovieContainer";
-import { getData } from "./ApiCalls";
+// import { getData } from "./ApiCalls";
+import NavBar from "./NavBar";
+import { Route } from "react-router-dom"
 
 class App extends Component {
   constructor() {
@@ -13,20 +15,26 @@ class App extends Component {
       error: "",
       pickPoster: false,
       posterDetails: null,
+      mainpage: true
     }
   }
   componentDidMount = () => {
-    getData()
-    .then((data) => this.setState({isLoaded:true, posters:data[0].movies}))
+    fetch("https://rancid-tomatillos.herokuapp.com/api/v2/movies")
+      .then((response) => response.json())
+      .then((data) => {
+        this.setState({isLoaded:true, posters:data.movies})
+      })
     .catch((error) => this.setState({isLoaded:true, error}))
   }
   showDetailsPage = (id) => {
-    getData(id)
-    .then((data) => this.setState({isLoaded:true, pickPoster: true, posterDetails: data[1].movie}))
-    .catch((error) => this.setState({isLoaded:true, error}))
+    console.log("show details page is firing", id)
+    const selectedPoster = this.state.posters.find(poster => poster.id === id)
+    console.log("selsectedposter", selectedPoster)
+    this.setState({posterDetails: selectedPoster, pickPoster: true, isLoaded: true, mainpage: false})
+    console.log("posterDetails", this.state)
   }
   showMainPage = () => {
-    this.setState({pickPoster: false, posterDetails: null})
+    this.setState({pickPoster: false, posterDetails: null, mainpage: true})
   }
   showStateMessage = () => {
     const { error, isLoaded } = this.state
@@ -37,22 +45,31 @@ class App extends Component {
     } 
   }
   render() {
-    this.showStateMessage()
-    const isPosterPicked = this.state.pickPoster
-    if(isPosterPicked) {
       return (
-        <main>
-          <DetailsPage posterDetails={this.state.posterDetails} showMain={this.showMainPage}/>
-        </main>
+        <div>
+          <NavBar mainpage={this.state.mainpage} showMain={this.showMainPage}/>
+            <Route 
+              exact path="/" 
+              render= {() => 
+                <div>
+                  <MovieContainer posters={this.state.posters} showDetails={this.showDetailsPage}/>
+                </div>
+              }
+            />
+            <Route 
+              exact path="/:id" 
+              render={({ match }) => {
+                console.log("this is match", match)
+                return (
+                  <div>
+                    <DetailsPage id={match.params.id} />
+                  </div>
+                )
+              }}
+            />
+        </div>
       )
-    } else {
-      return (
-        <main>
-          <MovieContainer posters={this.state.posters} showDetails={this.showDetailsPage}/>
-        </main>
-      )
-    }
   }
 }
-
+  
 export default App
