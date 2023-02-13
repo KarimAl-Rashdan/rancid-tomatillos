@@ -1,26 +1,27 @@
 import React from "react"
 import "./MovieContainer.css"
 import Movie from "./Movie"
-import NavBar from "./NavBar"
+import { Link } from "react-router-dom"
 
 const MovieContainer = ({posters, showDetails}) => {
-  // console.log("posters", posters)
-  // console.log("showdetails", showDetails)
   const moviePosters = posters.map(poster => {
     return (
-      <Movie 
-        image={poster.poster_path}
-        title={poster.title}
-        rating={poster.average_rating}
-        id={poster.id}
-        key={poster.id}
-        showDetails={showDetails}
-      />
+      <div>
+        <Link to={`/${poster.id}`}>
+          <Movie 
+            image={poster.poster_path}
+            title={poster.title}
+            rating={poster.average_rating}
+            id={poster.id}
+            key={poster.id}
+            showDetails={showDetails}
+          />
+        </Link>
+      </div>
     )
   })
   return (
     <div>
-      {/* <NavBar /> */}
       <div className="movieContainer">
         {moviePosters}
       </div>

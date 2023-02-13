@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import "./NavBar.css"
+import { Link } from "react-router-dom"
 
 class NavBar extends Component {
   constructor() {
@@ -36,7 +37,8 @@ class NavBar extends Component {
       return (
         <div className="navbar">
           <h1>Rancid Tomatillos</h1>
-          <button onClick={() => this.props.showMain()}>Return to Home</button>
+          <button onClick={() => {this.props.showMain()}}>
+            <Link to={"/"}>Return to Home</Link></button>
         </div>
       )
     }
