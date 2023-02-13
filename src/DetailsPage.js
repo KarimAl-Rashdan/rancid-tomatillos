@@ -6,23 +6,24 @@ class DetailsPage extends Component {
     super(props)
     this.state = {
       detailInfo: [],
-      isLoaded: false
+      isLoaded: false, 
+      error:""
     }
   }
   componentDidMount = () => {
     console.log("details page id", this.props.id)
+    console.log("props", this.props)
     fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${this.props.id}`)
     .then((response) => response.json())
-    .then((data) => {
-      console.log("heye baby", this.state.detailInfo)
-      return this.setState({detailInfo: data.movie})
-    })
-    .catch((error) => this.setState({isLoaded: true, error}))
+    .then((data) => this.setState({detailInfo: data.movie, isLoaded: true}))
+    .catch(() => this.setState({isLoaded: true, error: "Cannot load film. Please try again!"}))
   }
   render() {
     const poster = this.state.detailInfo
     return (
       <div>
+        <div style={{display: this.state.isLoaded ? "none" : "block"}}>Loading... </div>
+        <div style={{display: this.state.error ? "block" : "none"}}> {this.state.error} </div>
         <div className="posterSection" style={{backgroundImage: `url(${poster.backdrop_path})`}}>
           <article className="posterDetails">
             <p className="details">{poster.title}</p>

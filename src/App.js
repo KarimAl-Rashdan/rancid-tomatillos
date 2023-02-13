@@ -13,7 +13,7 @@ class App extends Component {
       posters: [],
       isLoaded: false,
       error: "",
-      pickPoster: false,
+      // pickPoster: false,
       posterDetails: null,
       mainpage: true
     }
@@ -24,7 +24,7 @@ class App extends Component {
       .then((data) => {
         this.setState({isLoaded:true, posters:data.movies})
       })
-    .catch((error) => this.setState({isLoaded:true, error}))
+    .catch((error) => this.setState({isLoaded:false, error}))
   }
   showDetailsPage = (id) => {
     console.log("show details page is firing", id)
@@ -45,6 +45,7 @@ class App extends Component {
     } 
   }
   render() {
+    this.showStateMessage()
       return (
         <div>
           <NavBar mainpage={this.state.mainpage} showMain={this.showMainPage}/>
