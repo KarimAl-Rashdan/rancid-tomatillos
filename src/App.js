@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import "./App.css"
-import DetailsPage from "./DetailsPage"
-import MovieContainer from "./MovieContainer";
-// import { getData } from "./ApiCalls";
-import NavBar from "./NavBar";
+import DetailsPage from "./Component/DetailsPage/DetailsPage"
+import MovieContainer from "./Component/MovieContainer/MovieContainer";
+import NavBar from "./Component/NavBar/NavBar";
 import { Route } from "react-router-dom"
 
 class App extends Component {
@@ -13,7 +12,6 @@ class App extends Component {
       posters: [],
       isLoaded: false,
       error: "",
-      // pickPoster: false,
       posterDetails: null,
       mainpage: true
     }
@@ -24,17 +22,14 @@ class App extends Component {
       .then((data) => {
         this.setState({isLoaded:true, posters:data.movies})
       })
-    .catch((error) => this.setState({isLoaded:false, error}))
+      .catch(() => this.setState({isLoaded: true, error: "Cannot load movies. Please try again!"}))
   }
   showDetailsPage = (id) => {
-    console.log("show details page is firing", id)
     const selectedPoster = this.state.posters.find(poster => poster.id === id)
-    console.log("selsectedposter", selectedPoster)
-    this.setState({posterDetails: selectedPoster, pickPoster: true, isLoaded: true, mainpage: false})
-    console.log("posterDetails", this.state)
+    this.setState({posterDetails: selectedPoster,isLoaded: true, mainpage: false})
   }
   showMainPage = () => {
-    this.setState({pickPoster: false, posterDetails: null, mainpage: true})
+    this.setState({posterDetails: null, mainpage: true})
   }
   showStateMessage = () => {
     const { error, isLoaded } = this.state
@@ -60,7 +55,6 @@ class App extends Component {
             <Route 
               exact path="/:id" 
               render={({ match }) => {
-                console.log("this is match", match)
                 return (
                   <div>
                     <DetailsPage id={match.params.id} />

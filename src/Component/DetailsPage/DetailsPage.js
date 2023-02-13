@@ -11,12 +11,10 @@ class DetailsPage extends Component {
     }
   }
   componentDidMount = () => {
-    console.log("details page id", this.props.id)
-    console.log("props", this.props)
     fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${this.props.id}`)
     .then((response) => response.json())
     .then((data) => this.setState({detailInfo: data.movie, isLoaded: true}))
-    .catch(() => this.setState({isLoaded: true, error: "Cannot load film. Please try again!"}))
+    .catch(() => this.setState({isLoaded: true, error: "Cannot load movie information. Please try again!"}))
   }
   render() {
     const poster = this.state.detailInfo

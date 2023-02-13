@@ -1,5 +1,5 @@
 import React from "react"
-import star from "./star-rating.jpg"
+import star from "../../star-rating.jpg"
 import "./Movie.css"
 
 const Movie = ({image, title, rating, id, showDetails}) => {

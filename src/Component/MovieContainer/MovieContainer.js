@@ -1,6 +1,6 @@
 import React from "react"
 import "./MovieContainer.css"
-import Movie from "./Movie"
+import Movie from "../Movie/Movie"
 import { Link } from "react-router-dom"
 
 const MovieContainer = ({posters, showDetails}) => {
