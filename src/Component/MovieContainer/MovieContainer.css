@@ -1,0 +1,22 @@
+html, body {
+  height:100vh;
+  width:100%;
+  background-color: black;
+}
+.movieContainer {
+  width:100%;
+  overflow-y: scroll;
+  margin:0px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+
+}
+
+a {
+  width:114%;
+  height:100%;
+}
+
+button:hover {
+  transform: scale(1) perspective(1px)
+}
