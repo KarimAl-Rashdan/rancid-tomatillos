@@ -11,7 +11,7 @@ class NavBar extends Component {
   }
   render() {
     return(
-      <div>
+      <nav>
         <Route 
           exact path="/" 
           render= {() => 
@@ -42,13 +42,15 @@ class NavBar extends Component {
           render={() => 
             <div className="navbar">
               <h1>Rancid Tomatillos</h1>
-              <button onClick={() => {this.props.showMain()}}>
-                <Link to={"/"}>Return to Home</Link>
-              </button>
+                <Link to={"/"}>
+                  <button className="homeBtn" onClick={() => {this.props.showMain()}}>
+                    Return to Home
+                  </button>
+                </Link>
             </div>  
             }
         />
-      </div>
+      </nav>
     )
   }
 }

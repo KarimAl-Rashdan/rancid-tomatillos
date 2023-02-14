@@ -6,7 +6,7 @@ import { Link } from "react-router-dom"
 const MovieContainer = ({posters, showDetails}) => {
   const moviePosters = posters.map(poster => {
     return (
-      <div>
+      <div className="movieContainer">
         <Link to={`/${poster.id}`}>
           <Movie 
             image={poster.poster_path}

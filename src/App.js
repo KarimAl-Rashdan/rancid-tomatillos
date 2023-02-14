@@ -31,37 +31,42 @@ class App extends Component {
   showMainPage = () => {
     this.setState({posterDetails: null, mainpage: true})
   }
-  showStateMessage = () => {
-    const { error, isLoaded } = this.state
-    if(error) {
-      return <div>You have an error: {error.message}</div>
-    } else if(!isLoaded) {
-      return <div>Loading...</div>
-    } 
-  }
+  // showStateMessage = () => {
+  //   const { error, isLoaded } = this.state
+  //   if(error) {
+  //     return <div>You have an error: {error.message}</div>
+  //   } else if(!isLoaded) {
+  //     return <div>Loading...</div>
+  //   } 
+  // }
   render() {
-    this.showStateMessage()
+    // this.showStateMessage()
       return (
         <div>
           <NavBar mainpage={this.state.mainpage} showMain={this.showMainPage}/>
-            <Route 
-              exact path="/" 
-              render= {() => 
+          <Route 
+            exact path="/" 
+            render= {() => 
+              <div>
+                <div style={{display:this.state.isLoaded ? "none" : "block"}}>Loading....</div>
+                <div style={{display: this.state.error ? "block" : "none"}}>{this.state.error}</div>
+                <MovieContainer posters={this.state.posters} showDetails={this.showDetailsPage}/>
+              </div>
+            }
+          />
+          <Route 
+            exact path="/:id" 
+            render={({ match }) => {
+              return (
                 <div>
-                  <MovieContainer posters={this.state.posters} showDetails={this.showDetailsPage}/>
+                  {/* {this.showStateMessage()} */}
+                  <div style={{display:this.state.isLoaded ? "none" : "block"}}>Loading....</div>
+                <div style={{display: this.state.error ? "block" : "none"}}>{this.state.error}</div>
+                  <DetailsPage id={match.params.id} />
                 </div>
-              }
-            />
-            <Route 
-              exact path="/:id" 
-              render={({ match }) => {
-                return (
-                  <div>
-                    <DetailsPage id={match.params.id} />
-                  </div>
-                )
-              }}
-            />
+              )
+            }}
+          />
         </div>
       )
   }

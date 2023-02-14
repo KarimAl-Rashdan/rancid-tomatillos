@@ -21,7 +21,7 @@ class DetailsPage extends Component {
     return (
       <div>
         <div style={{display: this.state.isLoaded ? "none" : "block"}}>Loading... </div>
-        <div style={{display: this.state.error ? "block" : "none"}}> {this.state.error} </div>
+        <div style={{display: this.state.error ? "block" : "none"}}><h1>{this.state.error}</h1></div>
         <div className="posterSection" style={{backgroundImage: `url(${poster.backdrop_path})`}}>
           <article className="posterDetails">
             <p className="details">{poster.title}</p>
