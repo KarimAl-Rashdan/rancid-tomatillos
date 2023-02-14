@@ -11,6 +11,20 @@ Rancid Tomatillos is a React application that uses React Router built in 8 days 
 - Practice refactoring
 - Create a multi-page UX using Router
 
+## Illustrations
+
+### View All Movies & Sort by Rating
+A user may browse a collection of movies on the main page
+
+When a user clicks on the Sort by Rating button, they can view movie ratings from lowest to highest and vice versa
+
+![Rancid Tomatillos home-page gif](https://media.giphy.com/media/ZVtQ025CYRGkhzxDQ7/giphy.gif)
+
+### Display Specific Movie Details
+When a user clicks on a specific movie, they will be routed to another page to view movie's details
+
+![Rancid Tomatillos movie-view gif](https://media.giphy.com/media/2QOMDzvgtoLE02slXz/giphy.gif)
+
 
 ## Setup
 
