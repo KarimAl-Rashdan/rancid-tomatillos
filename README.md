@@ -1,6 +1,6 @@
 # Rancid Tomatillos
 
-This project is a movie viewer React application that allows users to browse through a list of movies. A user can sort the order of the movies based on highest to lowest rating and vice versa by clicking the sort button in the nav bar. Users can view a movie's details by clicking on the movie image they are interested in. This navigates the m to a page that provides more details about the movie. The user can navigate back to the main page by clicking the return to home button, clicking the back arrow, or, tyrping in the home url: http://localhost:3000/. Check it out [here] (https://karimal-rashdan.github.io/rancid-tomatillos/)
+This project is a movie viewer React application that allows users to browse through a list of movies. A user can sort the order of the movies based on highest to lowest rating and vice versa by clicking the sort button in the nav bar. Users can view a movie's details by clicking on the movie image they are interested in. This navigates the m to a page that provides more details about the movie. The user can navigate back to the main page by clicking the return to home button, clicking the back arrow, or, tyrping in the home url: http://localhost:3000/. Check it out [here](https://karimal-rashdan.github.io/rancid-tomatillos/)
 
 ## Project Specs
 
