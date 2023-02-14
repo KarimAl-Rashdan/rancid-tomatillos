@@ -16,7 +16,6 @@ describe('Movie Container Test Suite', () => {
     cy
     .get("nav")
     .contains("Rancid Tomatillos")
-    // .contains("input")
     .should("be.visible")
     .should("have.length", 1)
     .should("have.css", "font-family")

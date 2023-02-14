@@ -31,6 +31,13 @@ class App extends Component {
   showMainPage = () => {
     this.setState({posterDetails: null, mainpage: true})
   }
+  sortBestMovies = () => {
+    let getOrder = this.state.posters.sort((a,b) => {
+      let firstMovie = this.state.posters[0].average_rating
+      return firstMovie < 7 ? b.average_rating - a.average_rating : a.average_rating - b.average_rating
+      })
+      this.setState({posters: getOrder})
+  }
   // showStateMessage = () => {
   //   const { error, isLoaded } = this.state
   //   if(error) {
@@ -43,7 +50,7 @@ class App extends Component {
     // this.showStateMessage()
       return (
         <div>
-          <NavBar mainpage={this.state.mainpage} showMain={this.showMainPage}/>
+          <NavBar mainpage={this.state.mainpage} showMain={this.showMainPage} sortBestMovies={this.sortBestMovies}/>
           <Route 
             exact path="/" 
             render= {() => 

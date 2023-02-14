@@ -17,23 +17,7 @@ class NavBar extends Component {
           render= {() => 
             <div className="navbar">
               <h1>Rancid Tomatillos</h1>
-              <div className="searchSort">
-                <input className="search"
-                  type="text"
-                  placeholder="Search Movies"
-                  name="search"
-                  // value={this.state.search}
-                />
-                <div className="sortButton">
-                  <button className="dropBtn">Sort
-                    <i className="fa fa-caret-down"></i>
-                  </button>
-                  <div className="sortOptions">
-                    <a href="#">Ascending ↑</a>
-                    <a href="#">Descending ↓</a>
-                  </div>
-                </div>
-              </div>
+              <button className="sortButton" onClick={() => {this.props.sortBestMovies()}}>Sort Movies</button>
             </div>
           }
         />                    
