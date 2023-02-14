@@ -60,7 +60,7 @@ class App extends Component {
               return (
                 <div>
                   {/* {this.showStateMessage()} */}
-                  <div style={{display:this.state.isLoaded ? "none" : "block"}}>Loading....</div>
+                  {/* <div style={{display:this.state.isLoaded ? "none" : "block"}}>Loading....</div> */}
                 <div style={{display: this.state.error ? "block" : "none"}}>{this.state.error}</div>
                   <DetailsPage id={match.params.id} />
                 </div>

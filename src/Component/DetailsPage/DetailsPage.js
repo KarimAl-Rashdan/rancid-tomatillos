@@ -24,17 +24,17 @@ class DetailsPage extends Component {
         <div style={{display: this.state.error ? "block" : "none"}}><h1>{this.state.error}</h1></div>
         <div className="posterSection" style={{backgroundImage: `url(${poster.backdrop_path})`}}>
           <article className="posterDetails">
-            <p className="details">{poster.title}</p>
-            <p className="details">{poster.tagline}</p>
-            <p className="details">Release Date: {poster.release_date}</p>
-            <p className="details">Category: {poster.genres}</p>
-            <p className="details">Rating: {poster.average_rating}</p>
-            <p className="details">Budget: {poster.budget}</p>
-            <p className="details">Revenue: {poster.revenue}</p>
-            <p className="details">Runtime: {poster.runtime} minutes</p>
+            <p className="details title">{poster.title}</p>
+            <p className="details tagline">{poster.tagline}</p>
+            {poster.release_date && <p className="details releaseDate">Release Date: {poster.release_date}</p>}
+            {poster.genres && <p className="details category">Category: {poster.genres}</p>}
+            {poster.average_rating && <p className="details rating">Rating: {poster.average_rating}</p>}
+            {poster.budget && <p className="details budget">Budget: $ {poster.budget}</p>}
+            {poster.revenue && <p className="details revenue">Revenue: $ {poster.revenue}</p>}
+            {poster.runtime && <p className="details runtime">Runtime: {poster.runtime} minutes</p>}
           </article>
         </div>
-        <footer>{poster.overview}</footer>
+        <footer className="overview">{poster.overview}</footer>
       </div>
     )
   }
