@@ -1,15 +1,8 @@
-import React, { Component } from "react"
+import React from "react"
 import "./NavBar.css"
 import { Route, Link } from "react-router-dom"
 
-class NavBar extends Component {
-  constructor() {
-    super()
-    this.state = {
-      search: ""
-    }
-  }
-  render() {
+const NavBar = ({sortBestMovies, showMain}) => {
     return(
       <nav>
         <Route 
@@ -17,7 +10,7 @@ class NavBar extends Component {
           render= {() => 
             <div className="navbar">
               <h1>Rancid Tomatillos</h1>
-              <button className="sortButton" onClick={() => {this.props.sortBestMovies()}}>Sort Movies</button>
+              <button className="sortButton" onClick={() => sortBestMovies()}>Sort Movies</button>
             </div>
           }
         />                    
@@ -27,7 +20,7 @@ class NavBar extends Component {
             <div className="navbar">
               <h1>Rancid Tomatillos</h1>
                 <Link to={"/"}>
-                  <button className="homeBtn" onClick={() => {this.props.showMain()}}>
+                  <button className="homeBtn" onClick={() => showMain()}>
                     Return to Home
                   </button>
                 </Link>
@@ -36,7 +29,8 @@ class NavBar extends Component {
         />
       </nav>
     )
-  }
+
 }
+
 
 export default NavBar

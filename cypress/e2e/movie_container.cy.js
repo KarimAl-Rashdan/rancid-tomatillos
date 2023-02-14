@@ -1,5 +1,3 @@
-// import MovieContainer from "../../src/Component/MovieContainer/MovieContainer"
-
 describe('Movie Container Test Suite', () => {
 
   beforeEach(() => {
