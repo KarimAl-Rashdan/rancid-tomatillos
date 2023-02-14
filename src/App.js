@@ -38,16 +38,7 @@ class App extends Component {
       })
       this.setState({posters: getOrder})
   }
-  // showStateMessage = () => {
-  //   const { error, isLoaded } = this.state
-  //   if(error) {
-  //     return <div>You have an error: {error.message}</div>
-  //   } else if(!isLoaded) {
-  //     return <div>Loading...</div>
-  //   } 
-  // }
   render() {
-    // this.showStateMessage()
       return (
         <div>
           <NavBar mainpage={this.state.mainpage} showMain={this.showMainPage} sortBestMovies={this.sortBestMovies}/>
@@ -66,8 +57,6 @@ class App extends Component {
             render={({ match }) => {
               return (
                 <div>
-                  {/* {this.showStateMessage()} */}
-                  {/* <div style={{display:this.state.isLoaded ? "none" : "block"}}>Loading....</div> */}
                 <div style={{display: this.state.error ? "block" : "none"}}>{this.state.error}</div>
                   <DetailsPage id={match.params.id} />
                 </div>
